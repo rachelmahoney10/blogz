@@ -103,7 +103,7 @@ def blog():
         post = Blog.query.filter_by(id=blog_id).first()
         print(post.title)
         print(post.body)
-        return render_template('blog.html', blogid=post.id, title=post.title, body=post.body, date=post.date, owner=post.owner.username)
+        return render_template('blog.html', blogid=post.id, title=post.title, body=post.body, owner=post.owner.username)
 
     if user_id != None:
         blogs = Blog.query.filter_by(owner_id=user_id).all()
