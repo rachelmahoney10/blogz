@@ -9,7 +9,7 @@
     {% for post in posts %}
         <a href="?id={{ post.id }}">{{ post.title }}</a>&nbsp;
         <p>{{ post.body }}</p>
-        <h6>posted by <a href='?userid={{ post.owner_id }}'>{{ post.owner.username }}</a> on {{ post.date }}</h6>
+        <h6>posted by <a href='?userid={{ post.owner_id }}'>{{ post.owner.username }}</a></h6>
         <hr/>
     {% endfor %}
 {% endif %}

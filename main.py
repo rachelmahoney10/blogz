@@ -61,23 +61,24 @@ def signup():
         if username == '' or password == '' or verify == '':
             flash('All fields on this page are required')
             return redirect('/signup')
+            return render_template('signup.html', pagetitle="Create an account", username=username)
         user_db_count = User.query.filter_by(username=username).count()
 
         if User.query.filter_by(username=username).count() >0: #user_count > 0:
             flash('That username is already taken!')
-            return redirect('/signup')
+            return render_template('signup.html', pagetitle="Create an account", username=username)
 
         if password != verify:
             flash('Passwords did not match!')
-            return redirect('/signup')
+            return render_template('signup.html', pagetitle="Create an account", username=username)
 
         if len(password) < 4:
             flash('Password is too short!')
-            return redirect('/signup')
+            return render_template('signup.html', pagetitle="Create an account", username=username)
 
         if len(username) < 4:
             flash('Username is too short!')
-            return redirect('/signup')
+            return render_template('signup.html', pagetitle="Create an account", username=username)
 
         user = User(username=username, password=password)
         db.session.add(user)
