@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ username }}'s posts</h2>
+{% if posts|length == 0 %}
+    <p>{{ username }} hasn't posted yet!</p>
+{% else %}
+    {% for post in posts %}
+        <a href="?id={{ post.id }}">{{ post.title }}</a>&nbsp;
+        <p>{{ post.body }}</p>
+        <h6>posted by <a href='?userid={{ post.owner_id }}'>{{ post.owner.username }}</a> on {{ post.date }}</h6>
+        <hr/>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

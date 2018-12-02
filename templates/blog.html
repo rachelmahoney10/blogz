@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if blogid %}
+    <h2 align="center" class="post title direct">{{ title }}</h2>
+    <p align="center">Posted by {{ owner }}</p>
+    <hr width="200px">
+    <p class="post content direct">{{ body }}</p>
+{% elif posts|length == 0 %}
+    <p>No users have posted yet!</p>
+{% else %}
+    {% for post in posts %}
+        <a href="?id={{ post.id }}">{{ post.title }}</a>&nbsp;
+        <p class="post mainpage content">{{ post.body }}</p>
+        <h6>Posted by <a href='?userid={{ post.owner_id }}'>{{ post.owner.username }}</a></h6>
+        <br/>
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}

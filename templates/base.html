@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ pagetitle }}</title>
+        <link rel="stylesheet" type="text/css" href="static/style.css">
+    </head>
+    <body>
+        <div style='float: right'>
+          {% if 'user' in session %}
+            <form action="logout" method="post" id='logout'>
+              <label>{{ session['user'] }} &nbsp;<input type="submit" value="Log Out" /></label>
+            </form>
+          {% else %}
+            <a href="login">Login</a> | <a href="signup">Signup</a>
+          {% endif %}
+        </div>
+        <a href="/" class="nav home">Home</a>
+        <a href="blog" class="nav blog">All Blogposts</a>
+        <a href="newpost" class="nav new-post">Add a Blogpost</a><br/>
+
+        <h1> <a href="blog">Blogz</a></h1>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+            <p class=flashes>{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <hr>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
