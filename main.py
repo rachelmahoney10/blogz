@@ -60,7 +60,6 @@ def signup():
 
         if username == '' or password == '' or verify == '':
             flash('All fields on this page are required')
-            return redirect('/signup')
             return render_template('signup.html', pagetitle="Create an account", username=username)
         user_db_count = User.query.filter_by(username=username).count()
 
