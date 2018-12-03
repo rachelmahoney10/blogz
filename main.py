@@ -48,7 +48,7 @@ def login():
                 flash('Your password was incorrect!')
         else:
             flash('No user found with that username!')
-        return redirect("/login")
+        return render_template('login.html', pagetitle="Login", username=username)
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
